@@ -91,12 +91,7 @@ declare type Bank = {
   sharableId: string;
 };
 
-declare type AccountTypes =
-  | "depository"
-  | "credit"
-  | "loan "
-  | "investment"
-  | "other";
+declare type AccountTypes = "depository" | "credit" | "loan " | "investment" | "other";
 
 declare type Category = "Food and Drink" | "Travel" | "Transfer";
 
@@ -325,4 +320,18 @@ declare interface getBankProps {
 
 declare interface getBankByAccountIdProps {
   accountId: string;
+}
+
+/* Custom Image Component */
+
+declare interface ImgProps {
+  src: any;
+  type?: ImgVariant;
+  alt?: string;
+  width?: string | number;
+  height?: string | number;
+  size?: any;
+  color?: string;
+  className?: string;
+  fill?: boolean;
 }

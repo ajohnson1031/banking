@@ -1,6 +1,6 @@
+import AnimatedCounter from "@/components/AnimatedCounter";
+import DoughnutChart from "@/components/DoughnutChart";
 import { FC } from "react";
-import AnimatedCounter from "../AnimatedCounter";
-import DoughnutChart from "../DoughnutChart";
 
 const TotalBalanceBox: FC<TotlaBalanceBoxProps> = ({ accounts = [], totalBanks, totalCurrentBalance }) => {
   return (
