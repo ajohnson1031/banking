@@ -16,6 +16,11 @@ interface CustomInputProps {
 }
 
 const CustomInput: FC<CustomInputProps> = ({ control, name, label, placeholder, type = "text" }) => {
+  const autoCompleteTypes: any = {
+    password: "current-password",
+    email: "email",
+  };
+
   return (
     <FormField
       control={control}
@@ -25,7 +30,15 @@ const CustomInput: FC<CustomInputProps> = ({ control, name, label, placeholder, 
           <FormLabel className="form-label">{label}</FormLabel>
           <div className="flex w-full flex-col">
             <FormControl>
-              <Input type={type} placeholder={placeholder} className="input-class" {...field} value={field.value as string} />
+              <Input
+                id={name}
+                type={type}
+                placeholder={placeholder}
+                className="input-class"
+                {...field}
+                value={field.value as string}
+                autoComplete={autoCompleteTypes[name] || undefined}
+              />
             </FormControl>
             <FormMessage className="form-message mt-2" />
           </div>
