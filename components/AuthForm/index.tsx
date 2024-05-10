@@ -32,6 +32,7 @@ const AuthForm = ({ type }: { type: string }) => {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
+
     try {
       //Sign up with AppWrite & create a plain link token
 
