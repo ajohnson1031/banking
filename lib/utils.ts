@@ -4,12 +4,12 @@ import qs from "query-string";
 import { twMerge } from "tailwind-merge";
 import { z } from "zod";
 
-export function cn(...inputs: ClassValue[]) {
+function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 // FORMAT DATE TIME
-export const formatDateTime = (dateString: Date) => {
+const formatDateTime = (dateString: Date) => {
   const dateTimeOptions: Intl.DateTimeFormatOptions = {
     weekday: "short", // abbreviated weekday name (e.g., 'Mon')
     month: "short", // abbreviated month name (e.g., 'Oct')
@@ -54,7 +54,7 @@ export const formatDateTime = (dateString: Date) => {
   };
 };
 
-export function formatAmount(amount: number): string {
+function formatAmount(amount: number): string {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -64,9 +64,9 @@ export function formatAmount(amount: number): string {
   return formatter.format(amount);
 }
 
-export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
+const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
 
-export const removeSpecialCharacters = (value: string) => {
+const removeSpecialCharacters = (value: string) => {
   return value.replace(/[^\w\s]/gi, "");
 };
 
@@ -76,7 +76,7 @@ interface UrlQueryParams {
   value: string;
 }
 
-export function formUrlQuery({ params, key, value }: UrlQueryParams) {
+function formUrlQuery({ params, key, value }: UrlQueryParams) {
   const currentUrl = qs.parse(params);
 
   currentUrl[key] = value;
@@ -90,7 +90,7 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
   );
 }
 
-export function getAccountTypeColors(type: AccountTypes) {
+function getAccountTypeColors(type: AccountTypes) {
   switch (type) {
     case "depository":
       return {
@@ -118,7 +118,7 @@ export function getAccountTypeColors(type: AccountTypes) {
   }
 }
 
-export function countTransactionCategories(transactions: Transaction[]): CategoryCount[] {
+function countTransactionCategories(transactions: Transaction[]): CategoryCount[] {
   const categoryCounts: { [category: string]: number } = {};
   let totalCount = 0;
 
@@ -153,7 +153,7 @@ export function countTransactionCategories(transactions: Transaction[]): Categor
   return aggregatedCategories;
 }
 
-export function extractCustomerIdFromUrl(url: string) {
+function extractCustomerIdFromUrl(url: string) {
   // Split the URL string by '/'
   const parts = url.split("/");
 
@@ -163,15 +163,15 @@ export function extractCustomerIdFromUrl(url: string) {
   return customerId;
 }
 
-export function encryptId(id: string) {
+function encryptId(id: string) {
   return btoa(id);
 }
 
-export function decryptId(id: string) {
+function decryptId(id: string) {
   return atob(id);
 }
 
-export const getTransactionStatus = (date: Date) => {
+const getTransactionStatus = (date: Date) => {
   const today = new Date();
   const twoDaysAgo = new Date(today);
   twoDaysAgo.setDate(today.getDate() - 2);
@@ -179,7 +179,7 @@ export const getTransactionStatus = (date: Date) => {
   return date > twoDaysAgo ? "Processing" : "Success";
 };
 
-export const authFormSchema = (type: string) =>
+const authFormSchema = (type: string) =>
   z.object({
     //sign-up
     firstName: type === "sign-in" ? z.string().optional() : z.string().min(3),
@@ -195,3 +195,19 @@ export const authFormSchema = (type: string) =>
     email: z.string().email(),
     password: z.string().min(8),
   });
+
+export {
+  authFormSchema,
+  cn,
+  countTransactionCategories,
+  decryptId,
+  encryptId,
+  extractCustomerIdFromUrl,
+  formatAmount,
+  formatDateTime,
+  formUrlQuery,
+  getAccountTypeColors,
+  getTransactionStatus,
+  parseStringify,
+  removeSpecialCharacters,
+};

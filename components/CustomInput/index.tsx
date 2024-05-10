@@ -1,3 +1,5 @@
+import Img, { ImgVariant } from "@/components/Img";
+import { Button } from "@/components/ui/button";
 import { FormControl, FormField, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { authFormSchema, cn } from "@/lib/utils";
@@ -5,8 +7,6 @@ import { FC, useState } from "react";
 import { Control, FieldPath } from "react-hook-form";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { z } from "zod";
-import Img, { ImgVariant } from "../Img";
-import { Button } from "../ui/button";
 
 const formSchema = authFormSchema("sign-up");
 

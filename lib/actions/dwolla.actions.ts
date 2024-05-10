@@ -22,7 +22,7 @@ const dwollaClient = new Client({
 });
 
 // Create a Dwolla Funding Source using a Plaid Processor Token
-export const createFundingSource = async (options: CreateFundingSourceOptions) => {
+const createFundingSource = async (options: CreateFundingSourceOptions) => {
   try {
     return await dwollaClient
       .post(`customers/${options.customerId}/funding-sources`, {
@@ -35,7 +35,7 @@ export const createFundingSource = async (options: CreateFundingSourceOptions) =
   }
 };
 
-export const createOnDemandAuthorization = async () => {
+const createOnDemandAuthorization = async () => {
   try {
     const onDemandAuthorization = await dwollaClient.post("on-demand-authorizations");
     const authLink = onDemandAuthorization.body._links;
@@ -45,7 +45,7 @@ export const createOnDemandAuthorization = async () => {
   }
 };
 
-export const createDwollaCustomer = async (newCustomer: NewDwollaCustomerParams) => {
+const createDwollaCustomer = async (newCustomer: NewDwollaCustomerParams) => {
   try {
     return await dwollaClient.post("customers", newCustomer).then((res) => res.headers.get("location"));
   } catch (err) {
@@ -53,7 +53,7 @@ export const createDwollaCustomer = async (newCustomer: NewDwollaCustomerParams)
   }
 };
 
-export const createTransfer = async ({ sourceFundingSourceUrl, destinationFundingSourceUrl, amount }: TransferParams) => {
+const createTransfer = async ({ sourceFundingSourceUrl, destinationFundingSourceUrl, amount }: TransferParams) => {
   try {
     const requestBody = {
       _links: {
@@ -75,7 +75,7 @@ export const createTransfer = async ({ sourceFundingSourceUrl, destinationFundin
   }
 };
 
-export const addFundingSource = async ({ dwollaCustomerId, processorToken, bankName }: AddFundingSourceParams) => {
+const addFundingSource = async ({ dwollaCustomerId, processorToken, bankName }: AddFundingSourceParams) => {
   try {
     // create dwolla auth link
     const dwollaAuthLinks = await createOnDemandAuthorization();
@@ -92,3 +92,5 @@ export const addFundingSource = async ({ dwollaCustomerId, processorToken, bankN
     console.error("Transfer fund failed: ", err);
   }
 };
+
+export { addFundingSource, createDwollaCustomer, createFundingSource, createOnDemandAuthorization, createTransfer };

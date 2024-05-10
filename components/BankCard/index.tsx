@@ -1,6 +1,6 @@
+import Img from "@/components/Img";
 import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
-import Img from "../Img";
 
 const BankCard = ({ account, userName, showBalance = true }: CreditCardProps) => {
   return (
@@ -26,7 +26,7 @@ const BankCard = ({ account, userName, showBalance = true }: CreditCardProps) =>
 
         <div className="bank-card_icon">
           <Img src="/icons/Paypass.svg" width={20} height={24} alt="pay" />
-          <Img src="/icons/mastercard.svg" width={45} height={32} alt="mastercard" className="ml-5" />
+          <Img src="/icons/mastercard.svg" width={45} height={32} alt="mastercard" className="ml-6" />
           <Img src="/icons/lines.svg" width={316} height={190} alt="lines" className="absolute top-0 left-0" />
         </div>
       </Link>
