@@ -2,7 +2,7 @@
 import cn from "classnames";
 import Image from "next/image";
 
-enum ImgVariant {
+export enum ImgVariant {
   ICON = "icon",
   STATIC_IMAGE = "image",
 }

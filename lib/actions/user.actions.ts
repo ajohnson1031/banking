@@ -95,7 +95,7 @@ const createLinkToken = async (user: User) => {
   }
 };
 
-const createBankAccount = async ({ userId, bankId, accountId, accessToken, fundingSourceUrl, sharableId }: createBankAccountProps) => {
+const createBankAccount = async ({ userId, bankId, accountId, accessToken, fundingSourceUrl, shareableId }: createBankAccountProps) => {
   try {
     const { database } = await createAdminClient();
     const bankAccount = await database.createDocument(DATABASE_ID!, BANK_COLLECTION_ID!, ID.unique(), {
@@ -104,9 +104,9 @@ const createBankAccount = async ({ userId, bankId, accountId, accessToken, fundi
       accountId,
       accessToken,
       fundingSourceUrl,
-      sharableId,
+      shareableId,
     });
-
+    console.log(bankAccount);
     return parseStringify(bankAccount);
   } catch (error) {
     console.error("Error", error);
@@ -146,7 +146,7 @@ const exchangePublicToken = async ({ publicToken, user }: exchangePublicTokenPro
       accountId: accountData.account_id,
       accessToken,
       fundingSourceUrl,
-      sharableId: encryptId(accountData.account_id),
+      shareableId: encryptId(accountData.account_id),
     });
 
     revalidatePath("/");
