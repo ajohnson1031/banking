@@ -2,6 +2,7 @@
 
 import CustomInput from "@/components/CustomInput";
 import Img from "@/components/Img";
+import PlaidLink from "@/components/PlaidLink";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { signIn, signUp } from "@/lib/actions/user.actions";
@@ -33,8 +34,22 @@ const AuthForm = ({ type }: { type: string }) => {
     setIsLoading(true);
     try {
       //Sign up with AppWrite & create a plain link token
+
       if (type === "sign-up") {
-        const newUser = await signUp(data);
+        const userData = {
+          firstName: data.firstName!,
+          lastName: data.lastName!,
+          address1: data.address1!,
+          city: data.city!,
+          state: data.state!,
+          postalCode: data.postalCode!,
+          dateOfBirth: data.dateOfBirth!,
+          ssn: data.ssn!,
+          email: data.email,
+          password: data.password,
+        };
+
+        const newUser = await signUp(userData);
         setUser(newUser);
       }
 
@@ -64,7 +79,9 @@ const AuthForm = ({ type }: { type: string }) => {
       </header>
 
       {user ? (
-        <div className="flex flex-col gap-4"></div>
+        <div className="flex flex-col gap-4">
+          <PlaidLink user={user} variant="primary" />
+        </div>
       ) : (
         <>
           <Form {...form}>
@@ -81,7 +98,7 @@ const AuthForm = ({ type }: { type: string }) => {
                   <CustomInput control={form.control} name="postalCode" label="Postal Code" placeholder="Example: 11101" />
                 </div>
                 <div className="flex gap-4">
-                  <CustomInput control={form.control} name="dateOfBirth" label="Date of Birth" placeholder="MM-DD-YYYY" />
+                  <CustomInput control={form.control} name="dateOfBirth" label="Date of Birth" placeholder="YYYY-MM-DD" />
                   <CustomInput control={form.control} name="ssn" label="SSN" placeholder="Example: 1234" />
                 </div>
               </>

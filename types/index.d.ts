@@ -8,14 +8,14 @@ declare type SearchParamProps = {
 // ========================================
 
 declare type SignUpParams = {
-  firstName?: string;
-  lastName?: string;
-  address1?: string;
-  city?: string;
-  state?: string;
-  postalCode?: string;
-  dateOfBirth?: string | Date;
-  ssn?: string;
+  firstName: string;
+  lastName: string;
+  address1: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
   email: string;
   password: string;
 };
@@ -170,7 +170,7 @@ declare interface PaginationProps {
 
 declare interface PlaidLinkProps {
   user: User;
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "ghost" | "null";
   dwollaCustomerId?: string;
 }
 
