@@ -46,9 +46,9 @@ const PlaidLink = ({ user, variant = "null" }: PlaidLinkProps) => {
       </Button>
     ),
     null: (
-      <Button className="plaidlink-default" onClick={handleClick}>
-        <Img src="/icons/connect-bank.svg" alt="connect bank" size={20} />
-        <p className="text-[16px] font-semibold text-black-2">Connect Bank</p>
+      <Button className="flex gap-2" onClick={handleClick}>
+        <Img src="/icons/plus.svg" alt="plus" />
+        <h2 className="text-14 font-semibold text-gray-600">Add Bank</h2>
       </Button>
     ),
   };
