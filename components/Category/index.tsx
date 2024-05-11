@@ -21,7 +21,7 @@ const Category = ({ category }: CategoryProps) => {
       <div className="flex flex-col gap-2 w-full">
         <div className="flex w-full justify-between">
           <p className={`${main} text-14 font-medium`}>{category.name}</p>
-          <p className={`${count} text-14`}>${category.count}</p>
+          <p className={`${count} text-14`}>${category.count}.</p>
         </div>
         <Progress value={(category.count / category.totalCount) * 100} className={`h-2 w-full ${progressBg}`} indicatorClassName={cn("h-2 w-full rounded-full", indicator)} />
       </div>
