@@ -1,3 +1,4 @@
+import Img from "@/components/Img";
 import { Button } from "@/components/ui/button";
 import { createLinkToken, exchangePublicToken } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
@@ -30,14 +31,26 @@ const PlaidLink = ({ user, variant = "null" }: PlaidLinkProps) => {
 
   const { open, ready } = usePlaidLink(config);
 
+  const handleClick = () => open();
+
   const buttons = {
     primary: (
-      <Button className="plaidlink-primary" onClick={() => open()} disabled={!ready}>
+      <Button className="plaidlink-primary" onClick={handleClick} disabled={!ready}>
         Connect Bank
       </Button>
     ),
-    ghost: <Button>Connect Bank</Button>,
-    null: <Button>Connect Bank</Button>,
+    ghost: (
+      <Button className="plaidlink-ghost" onClick={handleClick}>
+        <Img src="/icons/connect-bank.svg" alt="connect bank" size={20} />
+        <p className="text-[16px] font-semibold text-black-2 hidden xl:block">Connect Bank</p>
+      </Button>
+    ),
+    null: (
+      <Button className="plaidlink-default" onClick={handleClick}>
+        <Img src="/icons/connect-bank.svg" alt="connect bank" size={20} />
+        <p className="text-[16px] font-semibold text-black-2">Connect Bank</p>
+      </Button>
+    ),
   };
 
   return <>{buttons[variant]}</>;

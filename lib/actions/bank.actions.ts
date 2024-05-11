@@ -5,8 +5,8 @@ import { ACHClass, CountryCode, TransferAuthorizationCreateRequest, TransferCrea
 import { plaidClient } from "@/lib/plaid";
 import { parseStringify } from "@/lib/utils";
 
-import { getTransactionsByBankId } from "./transaction.actions";
-import { getBank, getBanks } from "./user.actions";
+import { getTransactionsByBankId } from "@/lib/actions/transaction.actions";
+import { getBank, getBanks } from "@/lib/actions/user.actions";
 
 // Get multiple bank accounts
 export const getAccounts = async ({ userId }: getAccountsProps) => {

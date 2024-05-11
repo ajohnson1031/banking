@@ -2,6 +2,7 @@
 
 import Footer from "@/components/Footer";
 import Img from "@/components/Img";
+import PlaidLink from "@/components/PlaidLink";
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -29,6 +30,7 @@ const Sidebar = ({ user }: SidebarProps) => {
             </Link>
           );
         })}
+        <PlaidLink user={user} />
       </nav>
       <Footer user={user} />
     </section>
