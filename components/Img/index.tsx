@@ -1,5 +1,5 @@
 "use client";
-import cn from "classnames";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 export enum ImgVariant {
