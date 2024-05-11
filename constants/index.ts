@@ -140,3 +140,5 @@ export const transactionCategoryStyles = {
     chipBackgroundColor: "bg-inherit",
   },
 };
+
+export const ROWS_PER_PAGE = 10;
