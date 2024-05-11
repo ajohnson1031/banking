@@ -1,9 +1,13 @@
 import BankCard from "@/components/BankCard";
+import Category from "@/components/Category";
 import Img from "@/components/Img";
+import { countTransactionCategories } from "@/lib/utils";
 import Link from "next/link";
 
 const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
   const { firstName, lastName, email } = user;
+  const categories: CategoryCount[] = countTransactionCategories(transactions);
+
   return (
     <aside className="right-sidebar">
       <section className="flex flex-col pb-8">
@@ -32,7 +36,7 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
         </div>
 
         {banks?.length > 0 && (
-          <div className="relative flex flex-1 flex-col items-center justify-center gap-5">
+          <div className="relative flex flex-1 flex-col justify-center gap-5">
             <div className="relative z-10">
               <BankCard key={banks[0].$id} account={banks[0]} userName={`${firstName} ${lastName}`} showBalance={false} />
             </div>
@@ -41,6 +45,16 @@ const RightSideBar = ({ user, transactions, banks }: RightSidebarProps) => {
                 <BankCard key={banks[1].$id} account={banks[1]} userName={`${firstName} ${lastName}`} showBalance={false} />
               </div>
             )}
+
+            <div className="mt-10 flex flex-1 flex-col gap-6">
+              <h2 className="header-2">Top Categories</h2>
+
+              <div className="space-y-3">
+                {categories.map((category, i) => (
+                  <Category key={category.name} category={category} />
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </section>

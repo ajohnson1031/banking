@@ -15,7 +15,7 @@ export const sidebarLinks = [
     label: "Transaction History",
   },
   {
-    imgURL: "/icons/money-send.svg",
+    imgURL: "/icons/payment-transfer.svg",
     route: "/payment-transfer",
     label: "Transfer Funds",
   },
@@ -50,6 +50,22 @@ export const ITEMS = [
 
 export const topCategoryStyles = {
   "Food and Drink": {
+    bg: "bg-pink-25",
+    circleBg: "bg-pink-100",
+    text: {
+      main: "text-pink-900",
+      count: "text-pink-700",
+    },
+    progress: {
+      bg: "bg-pink-100",
+      indicator: "bg-pink-700",
+    },
+    icon: {
+      sprite: "/icons/snack.png",
+      size: 22,
+    },
+  },
+  Travel: {
     bg: "bg-blue-25",
     circleBg: "bg-blue-100",
     text: {
@@ -60,9 +76,12 @@ export const topCategoryStyles = {
       bg: "bg-blue-100",
       indicator: "bg-blue-700",
     },
-    icon: "/icons/monitor.svg",
+    icon: {
+      sprite: "/icons/walk.png",
+      size: 22,
+    },
   },
-  Travel: {
+  Payment: {
     bg: "bg-success-25",
     circleBg: "bg-success-100",
     text: {
@@ -73,7 +92,26 @@ export const topCategoryStyles = {
       bg: "bg-success-100",
       indicator: "bg-success-700",
     },
-    icon: "/icons/coins.svg",
+    icon: {
+      sprite: "/icons/coins.svg",
+      size: 20,
+    },
+  },
+  Transfer: {
+    bg: "bg-red-50",
+    circleBg: "bg-red-100",
+    text: {
+      main: "text-red-900",
+      count: "text-red-700",
+    },
+    progress: {
+      bg: "bg-red-100",
+      indicator: "bg-red-700",
+    },
+    icon: {
+      sprite: "/icons/payment-transfer-red.svg",
+      size: 20,
+    },
   },
   default: {
     bg: "bg-pink-25",
@@ -86,7 +124,10 @@ export const topCategoryStyles = {
       bg: "bg-pink-100",
       indicator: "bg-pink-700",
     },
-    icon: "/icons/shopping-bag.svg",
+    icon: {
+      sprite: "/icons/shopping-bag.svg",
+      size: 20,
+    },
   },
 };
 
