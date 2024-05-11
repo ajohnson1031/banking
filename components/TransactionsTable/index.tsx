@@ -4,7 +4,7 @@ import { formatAmount, formatDateTime, getTransactionStatus } from "@/lib/utils"
 
 const TransactionsTable = ({ transactions }: TransactionTableProps) => {
   return (
-    <Table>
+    <Table className="relative z-10">
       <TableHeader className="bg-[#F9FAFB">
         <TableRow>
           <TableHead className="px-2">Transaction</TableHead>
